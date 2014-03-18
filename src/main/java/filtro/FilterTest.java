@@ -34,6 +34,11 @@ public class FilterTest {
 	public void input_with_accentuated_word_is_converted_to_list_of_non_accentuated_word(){
 		assertEquals(result, filter("FÓNTANERO"));
 	}
+	
+	@Test
+	public void input_with_plural_word_is_converted_to_list_of_singula_word(){
+		assertEquals(result, filter("FONTANEROS"));
+	}
 
 	private List<String> filter(String searchQuery) {
 		List<String> result = new ArrayList<String>();
