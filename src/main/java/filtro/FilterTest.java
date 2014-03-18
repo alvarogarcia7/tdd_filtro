@@ -52,6 +52,10 @@ public class FilterTest {
 		.replace("Ó","O")
 		.replace("Ú","U");
 		
+		if(searchQuery.endsWith("S")){
+			searchQuery = searchQuery.substring(0, searchQuery.length()-1);
+		}
+		
 		result.add(searchQuery);
 		
 		return result;
