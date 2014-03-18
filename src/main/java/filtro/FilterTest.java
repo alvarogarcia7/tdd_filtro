@@ -25,7 +25,7 @@ public class FilterTest {
 
 	private Object filter(String searchQuery) {
 		List<String> result = new ArrayList<String>();
-		result.add(searchQuery);
+		result.add(searchQuery.toUpperCase());
 		return result;
 	}
 
