@@ -4,6 +4,8 @@ import static org.junit.Assert.assertEquals;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -35,7 +37,18 @@ public class FilterTest {
 
 	private List<String> filter(String searchQuery) {
 		List<String> result = new ArrayList<String>();
-		result.add(searchQuery.toUpperCase());
+
+		searchQuery = searchQuery.toUpperCase();
+		
+		searchQuery = searchQuery
+		.replace("Á","A")
+		.replace("É","E")
+		.replace("Í","I")
+		.replace("Ó","O")
+		.replace("Ú","U");
+		
+		result.add(searchQuery);
+		
 		return result;
 	}
 
