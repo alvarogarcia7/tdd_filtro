@@ -15,6 +15,13 @@ public class FilterTest {
 		result.add("FONTANERO");
 		assertEquals(result, filter("FONTANERO")); 
 	}
+	
+	@Test
+	public void input_with_lowcase_word_is_converted_to_list_of_uppercase_word(){
+		ArrayList<String> result = new ArrayList<String>();
+		result.add("FONTANERO");
+		assertEquals(result, filter("fontanero"));
+	}
 
 	private Object filter(String searchQuery) {
 		List<String> result = new ArrayList<String>();
