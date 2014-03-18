@@ -27,8 +27,13 @@ public class FilterTest {
 	public void input_with_lowcase_word_is_converted_to_list_of_uppercase_word(){
 		assertEquals(result, filter("fontanero"));
 	}
+	
+	@Test
+	public void input_with_accentuated_word_is_converted_to_list_of_non_accentuated_word(){
+		assertEquals(result, filter("FÓNTANERO"));
+	}
 
-	private Object filter(String searchQuery) {
+	private List<String> filter(String searchQuery) {
 		List<String> result = new ArrayList<String>();
 		result.add(searchQuery.toUpperCase());
 		return result;
