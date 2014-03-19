@@ -8,7 +8,7 @@ import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 
-public class FilterTest {
+public class FilterLanguageES {
 	
 	private List<String> expectedWords;
 	private SearchQueryFilter filter; 
@@ -59,8 +59,5 @@ public class FilterTest {
 		assertEquals(expectedWords, filter.normalize("FONTANERO   BARCELONA"));		
 	}
 	
-	@Test
-	public void in_language_XX_input_with_plural_words_converted_to_list_of_singular_word(){
-		assertEquals(expectedWords, filter.normalize("FONTANEROX", "XX"));		
-	}
+
 }
