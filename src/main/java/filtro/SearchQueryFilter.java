@@ -1,6 +1,7 @@
 package filtro;
 
 import java.text.Normalizer;
+
 import java.util.Arrays;
 import java.util.List;
 
@@ -14,9 +15,8 @@ public class SearchQueryFilter {
 	}
 
 	private List<String> getWordsFrom(String sentence) {
-		String trimmedSentence = sentence.trim();
-		List<String> result = Arrays.asList(trimmedSentence.split(" "));
-		return result;
+		List<String> words = Arrays.asList(sentence.trim().split(" "));
+		return words;
 	}
 
 	private String toSingular(String candidateRegularPlural) {
