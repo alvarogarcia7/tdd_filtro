@@ -4,13 +4,13 @@ import java.text.Normalizer;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SearchQueryNormalizer {
+public class SearchQueryFilter {
 	
 
-	public SearchQueryNormalizer() {
+	public SearchQueryFilter() {
 	}
 	
-	public List<String> filter(String searchQuery) {
+	public List<String> normalize(String searchQuery) {
 		List<String> result = new ArrayList<String>();
 
 		searchQuery = searchQuery.toUpperCase();

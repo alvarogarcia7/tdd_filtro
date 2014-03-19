@@ -11,36 +11,34 @@ import org.junit.Test;
 public class FilterTest {
 	
 	private List<String> result;
+	private SearchQueryFilter filter; 
 
 	@Before
 	public void setUp() {
+		filter = new SearchQueryFilter();
+		
 		result = new ArrayList<String>();
 		result.add("FONTANERO");
 	}
 
 	@Test
 	public void input_with_single_word_is_converted_to_list_of_single_word() {
-		assertEquals(result, filter("FONTANERO")); 
+		assertEquals(result, filter.normalize("FONTANERO")); 
 	}
 	
 	@Test
 	public void input_with_lowcase_word_is_converted_to_list_of_uppercase_word(){
-		assertEquals(result, filter("fontanero"));
+		assertEquals(result, filter.normalize("fontanero"));
 	}
 	
 	@Test
 	public void input_with_accentuated_word_is_converted_to_list_of_non_accentuated_word(){
-		assertEquals(result, filter("FÓNTANÈRÓ"));
+		assertEquals(result, filter.normalize("FÓNTANÈRÓ"));
 	}
 	
 	@Test
 	public void input_with_plural_word_is_converted_to_list_of_singula_word(){
-		assertEquals(result, filter("FONTANEROS"));
-	}
-
-	private List<String> filter(String searchQuery) {
-		SearchQueryNormalizer normalizer = new SearchQueryNormalizer();
-		return normalizer.filter(searchQuery);
+		assertEquals(result, filter.normalize("FONTANEROS"));
 	}
 
 }
