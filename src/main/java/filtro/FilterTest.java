@@ -46,5 +46,4 @@ public class FilterTest {
 		result.add("BARCELONA");
 		assertEquals(result, filter.normalize("FONTANERO BARCELONA"));
 	}
-
 }
