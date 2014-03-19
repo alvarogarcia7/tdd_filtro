@@ -1,27 +1,20 @@
 package filtro;
 
 import java.text.Normalizer;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class SearchQueryFilter {
 	
-	public SearchQueryFilter() {
-	}
-	
 	public List<String> normalize(String searchQuery) {
-		List<String> result = new ArrayList<String>();
 		searchQuery = toUpperCase(searchQuery);
 		searchQuery = removeAccents(searchQuery);
 		searchQuery = toSingular(searchQuery);
-		result = splitByOneSpace(searchQuery);
-		return result;
+		return getWordsFrom(searchQuery);
 	}
 
-	private List<String> splitByOneSpace(String searchQuery) {
-		List<String> result;
-		result = Arrays.asList(searchQuery.split(" "));
+	private List<String> getWordsFrom(String sentence) {
+		List<String> result = Arrays.asList(sentence.split(" "));
 		return result;
 	}
 
