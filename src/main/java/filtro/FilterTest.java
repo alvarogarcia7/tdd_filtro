@@ -46,4 +46,10 @@ public class FilterTest {
 		result.add("BARCELONA");
 		assertEquals(result, filter.normalize("FONTANERO BARCELONA"));
 	}
+	
+	@Test
+	public void input_with_words_with_lead_spaces_converted_to_list_of_words(){
+		result.add("BARCELONA");
+		assertEquals(result, filter.normalize(" FONTANERO BARCELONA"));		
+	}
 }

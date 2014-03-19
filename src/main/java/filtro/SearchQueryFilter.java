@@ -14,7 +14,8 @@ public class SearchQueryFilter {
 	}
 
 	private List<String> getWordsFrom(String sentence) {
-		List<String> result = Arrays.asList(sentence.split(" "));
+		String trimmedSentence = sentence.trim();
+		List<String> result = Arrays.asList(trimmedSentence.split(" "));
 		return result;
 	}
 
