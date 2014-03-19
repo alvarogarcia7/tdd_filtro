@@ -1,6 +1,7 @@
 package filtro;
 
 import java.text.Normalizer;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -10,7 +11,10 @@ public class SearchQueryFilter {
 		return normalize(searchQuery, "ES");
 	}
 	public List<String> normalize(String searchQuery, String language) {
-		searchQuery = toUpperCase(searchQuery);
+		
+		UpperCaseNormalizer filter = new UpperCaseNormalizer();
+		searchQuery = filter.normalize(searchQuery);
+
 		searchQuery = removeAccents(searchQuery);
 		searchQuery = toSingular(searchQuery, language);
 		return getWordsFrom(searchQuery);
@@ -43,8 +47,4 @@ public class SearchQueryFilter {
 		return searchQuery;
 	}
 
-	private String toUpperCase(String searchQuery) {
-		searchQuery = searchQuery.toUpperCase();
-		return searchQuery;
-	}
 }
