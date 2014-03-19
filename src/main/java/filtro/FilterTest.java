@@ -41,4 +41,10 @@ public class FilterTest {
 		assertEquals(result, filter.normalize("FONTANEROS"));
 	}
 
+	@Test
+	public void input_with_words_is_converted_to_list_of_words(){
+		result.add("BARCELONA");
+		assertEquals(result, filter.normalize("FONTANERO BARCELONA"));
+	}
+
 }
