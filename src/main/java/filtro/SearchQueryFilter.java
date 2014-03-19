@@ -21,7 +21,7 @@ public class SearchQueryFilter {
 		SingularizerNormalizer filterSingularizer = new SingularizerNormalizer();
 		searchQuery = filterSingularizer.normalize(searchQuery, language);
 		
-		SplitterNormalizer splitterNormalizer = new SplitterNormalizer();
-		return splitterNormalizer.normalize(searchQuery);
+		SplitterNormalizer filterSplitter = new SplitterNormalizer();
+		return filterSplitter.normalize(searchQuery);
 	}
 }
