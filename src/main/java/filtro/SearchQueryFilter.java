@@ -1,7 +1,6 @@
 package filtro;
 
 import java.text.Normalizer;
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -15,9 +14,13 @@ public class SearchQueryFilter {
 	}
 
 	private List<String> getWordsFrom(String sentence) {
-		sentence = sentence.replaceAll("\\s+", " ");
+		sentence = removeExtraSpaces(sentence);
 		List<String> words = Arrays.asList(sentence.trim().split(" "));
 		return words;
+	}
+
+	private String removeExtraSpaces(String sentence) {
+		return sentence.replaceAll("\\s+", " ");
 	}
 
 	private String toSingular(String candidateRegularPlural) {
