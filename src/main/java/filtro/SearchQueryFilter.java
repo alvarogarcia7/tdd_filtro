@@ -7,9 +7,12 @@ import java.util.List;
 public class SearchQueryFilter {
 	
 	public List<String> normalize(String searchQuery) {
+		return normalize(searchQuery, "ES");
+	}
+	public List<String> normalize(String searchQuery, String language) {
 		searchQuery = toUpperCase(searchQuery);
 		searchQuery = removeAccents(searchQuery);
-		searchQuery = toSingular(searchQuery);
+		searchQuery = toSingular(searchQuery, language);
 		return getWordsFrom(searchQuery);
 	}
 
@@ -23,8 +26,11 @@ public class SearchQueryFilter {
 		return sentence.replaceAll("\\s+", " ");
 	}
 
-	private String toSingular(String candidateRegularPlural) {
-		final String SUFFIX_PLURAL = "S";
+	private String toSingular(String candidateRegularPlural, String language) {
+		String SUFFIX_PLURAL = "S";
+		if("XX".equals(language)){
+			SUFFIX_PLURAL = "X";
+		}
 		
 		if(candidateRegularPlural.endsWith(SUFFIX_PLURAL)){
 			return candidateRegularPlural.substring(0, candidateRegularPlural.length()-1);
