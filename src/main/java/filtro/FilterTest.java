@@ -56,6 +56,6 @@ public class FilterTest {
 	@Test
 	public void input_with_words_with_inline_spaces_converted_to_list_of_words(){
 		result.add("BARCELONA");
-		assertEquals(result, filter.normalize("FONTANERO  BARCELONA"));		
+		assertEquals(result, filter.normalize("FONTANERO   BARCELONA"));		
 	}
 }

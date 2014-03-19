@@ -15,6 +15,7 @@ public class SearchQueryFilter {
 	}
 
 	private List<String> getWordsFrom(String sentence) {
+		sentence = sentence.replaceAll("\\s+", " ");
 		List<String> words = Arrays.asList(sentence.trim().split(" "));
 		return words;
 	}
