@@ -10,57 +10,57 @@ import org.junit.Test;
 
 public class FilterTest {
 	
-	private List<String> result;
+	private List<String> expectedWords;
 	private SearchQueryFilter filter; 
 
 	@Before
 	public void setUp() {
 		filter = new SearchQueryFilter();
 		
-		result = new ArrayList<String>();
-		result.add("FONTANERO");
+		expectedWords = new ArrayList<String>();
+		expectedWords.add("FONTANERO");
 	}
 
 	@Test
 	public void input_with_single_word_is_converted_to_list_of_single_word() {
-		assertEquals(result, filter.normalize("FONTANERO")); 
+		assertEquals(expectedWords, filter.normalize("FONTANERO")); 
 	}
 	
 	@Test
 	public void input_with_lowcase_word_is_converted_to_list_of_uppercase_word(){
-		assertEquals(result, filter.normalize("fontanero"));
+		assertEquals(expectedWords, filter.normalize("fontanero"));
 	}
 	
 	@Test
 	public void input_with_accentuated_word_is_converted_to_list_of_non_accentuated_word(){
-		assertEquals(result, filter.normalize("FÓNTANÈRÓ"));
+		assertEquals(expectedWords, filter.normalize("FÓNTANÈRÓ"));
 	}
 	
 	@Test
 	public void input_with_plural_word_is_converted_to_list_of_singula_word(){
-		assertEquals(result, filter.normalize("FONTANEROS"));
+		assertEquals(expectedWords, filter.normalize("FONTANEROS"));
 	}
 
 	@Test
 	public void input_with_words_is_converted_to_list_of_words(){
-		result.add("BARCELONA");
-		assertEquals(result, filter.normalize("FONTANERO BARCELONA"));
+		expectedWords.add("BARCELONA");
+		assertEquals(expectedWords, filter.normalize("FONTANERO BARCELONA"));
 	}
 	
 	@Test
 	public void input_with_words_with_lead_spaces_converted_to_list_of_words(){
-		result.add("BARCELONA");
-		assertEquals(result, filter.normalize(" FONTANERO BARCELONA"));		
+		expectedWords.add("BARCELONA");
+		assertEquals(expectedWords, filter.normalize(" FONTANERO BARCELONA"));		
 	}
 	
 	@Test
 	public void input_with_words_with_inline_spaces_converted_to_list_of_words(){
-		result.add("BARCELONA");
-		assertEquals(result, filter.normalize("FONTANERO   BARCELONA"));		
+		expectedWords.add("BARCELONA");
+		assertEquals(expectedWords, filter.normalize("FONTANERO   BARCELONA"));		
 	}
 	
 	@Test
 	public void in_language_XX_input_with_plural_words_converted_to_list_of_singular_word(){
-		assertEquals(result, filter.normalize("FONTANEROX", "XX"));		
+		assertEquals(expectedWords, filter.normalize("FONTANEROX", "XX"));		
 	}
 }
