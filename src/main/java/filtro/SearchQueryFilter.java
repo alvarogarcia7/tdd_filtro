@@ -21,16 +21,7 @@ public class SearchQueryFilter {
 		SingularizerNormalizer filterSingularizer = new SingularizerNormalizer();
 		searchQuery = filterSingularizer.normalize(searchQuery, language);
 		
-		return getWordsFrom(searchQuery);
-	}
-
-	private List<String> getWordsFrom(String sentence) {
-		sentence = removeExtraSpaces(sentence);
-		List<String> words = Arrays.asList(sentence.trim().split(" "));
-		return words;
-	}
-
-	private String removeExtraSpaces(String sentence) {
-		return sentence.replaceAll("\\s+", " ");
+		SplitterNormalizer splitterNormalizer = new SplitterNormalizer();
+		return splitterNormalizer.normalize(searchQuery);
 	}
 }
