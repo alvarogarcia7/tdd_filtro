@@ -1,8 +1,8 @@
 package filtro;
 
-public class UpperCaseNormalizer {
+public class UpperCaseNormalizer implements Normalizer{
 	
-	public String normalize(String word) {
+	public String normalize(String word) { 
 		word = word.toUpperCase();
 		return word;
 	}

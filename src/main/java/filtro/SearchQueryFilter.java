@@ -15,7 +15,8 @@ public class SearchQueryFilter {
 		UpperCaseNormalizer filter = new UpperCaseNormalizer();
 		searchQuery = filter.normalize(searchQuery);
 
-		searchQuery = removeAccents(searchQuery);
+		AccentRemoverNormalizer filterAccents = new AccentRemoverNormalizer();
+		searchQuery = filterAccents.normalize(searchQuery);
 		searchQuery = toSingular(searchQuery, language);
 		return getWordsFrom(searchQuery);
 	}
@@ -40,11 +41,6 @@ public class SearchQueryFilter {
 			return candidateRegularPlural.substring(0, candidateRegularPlural.length()-1);
 		}
 		return candidateRegularPlural;
-	}
-
-	private String removeAccents(String searchQuery) {
-		searchQuery = Normalizer.normalize(searchQuery, Normalizer.Form.NFD).replaceAll("\\p{InCombiningDiacriticalMarks}+", "");
-		return searchQuery;
 	}
 
 }
