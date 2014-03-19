@@ -8,24 +8,40 @@ import java.util.List;
 
 public class SearchQueryFilter {
 	
-
 	public SearchQueryFilter() {
 	}
 	
 	public List<String> normalize(String searchQuery) {
 		List<String> result = new ArrayList<String>();
-
-		searchQuery = searchQuery.toUpperCase();
-		
-		searchQuery = Normalizer.normalize(searchQuery, Normalizer.Form.NFD).replaceAll("\\p{InCombiningDiacriticalMarks}+", "");
-		
-		String SUFFIX_PLURAL = "S";
-		if(searchQuery.endsWith(SUFFIX_PLURAL)){
-			searchQuery = searchQuery.substring(0, searchQuery.length()-1);
-		}
-		
-		result = Arrays.asList(searchQuery.split(" "));
-		
+		searchQuery = toUpperCase(searchQuery);
+		searchQuery = removeAccents(searchQuery);
+		searchQuery = toSingular(searchQuery);
+		result = splitByOneSpace(searchQuery);
 		return result;
+	}
+
+	private List<String> splitByOneSpace(String searchQuery) {
+		List<String> result;
+		result = Arrays.asList(searchQuery.split(" "));
+		return result;
+	}
+
+	private String toSingular(String candidateRegularPlural) {
+		final String SUFFIX_PLURAL = "S";
+		
+		if(candidateRegularPlural.endsWith(SUFFIX_PLURAL)){
+			return candidateRegularPlural.substring(0, candidateRegularPlural.length()-1);
+		}
+		return candidateRegularPlural;
+	}
+
+	private String removeAccents(String searchQuery) {
+		searchQuery = Normalizer.normalize(searchQuery, Normalizer.Form.NFD).replaceAll("\\p{InCombiningDiacriticalMarks}+", "");
+		return searchQuery;
+	}
+
+	private String toUpperCase(String searchQuery) {
+		searchQuery = searchQuery.toUpperCase();
+		return searchQuery;
 	}
 }
