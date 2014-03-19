@@ -17,7 +17,10 @@ public class SearchQueryFilter {
 
 		AccentRemoverNormalizer filterAccents = new AccentRemoverNormalizer();
 		searchQuery = filterAccents.normalize(searchQuery);
-		searchQuery = toSingular(searchQuery, language);
+		
+		SingularizerNormalizer filterSingularizer = new SingularizerNormalizer();
+		searchQuery = filterSingularizer.normalize(searchQuery, language);
+		
 		return getWordsFrom(searchQuery);
 	}
 
@@ -30,17 +33,4 @@ public class SearchQueryFilter {
 	private String removeExtraSpaces(String sentence) {
 		return sentence.replaceAll("\\s+", " ");
 	}
-
-	private String toSingular(String candidateRegularPlural, String language) {
-		String SUFFIX_PLURAL = "S";
-		if("XX".equals(language)){
-			SUFFIX_PLURAL = "X";
-		}
-		
-		if(candidateRegularPlural.endsWith(SUFFIX_PLURAL)){
-			return candidateRegularPlural.substring(0, candidateRegularPlural.length()-1);
-		}
-		return candidateRegularPlural;
-	}
-
 }
