@@ -58,4 +58,9 @@ public class FilterTest {
 		result.add("BARCELONA");
 		assertEquals(result, filter.normalize("FONTANERO   BARCELONA"));		
 	}
+	
+	@Test
+	public void in_language_XX_input_with_plural_words_converted_to_list_of_singular_word(){
+		assertEquals(result, filter.normalize("FONTANEROX", "XX"));		
+	}
 }
