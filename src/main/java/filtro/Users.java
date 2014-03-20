@@ -7,7 +7,7 @@ public class Users {
 
 	private List<User> users = new ArrayList<User>();
 	
-	public void addUser(String name, String profile) {
+	public void addUser(String name, String profile, String country) {
 		User user = new User();
 		user.setName(name);
 		user.setProfile(profile);

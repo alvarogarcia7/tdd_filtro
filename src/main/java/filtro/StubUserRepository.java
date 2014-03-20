@@ -9,7 +9,7 @@ public class StubUserRepository implements UserRepository{
 		this.users = users;
 	}
 	
-	public Users getUsers(){
+	public Users findByCountry(String country){
 		return users;
 	}
  

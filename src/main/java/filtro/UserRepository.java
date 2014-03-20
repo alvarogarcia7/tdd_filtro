@@ -2,6 +2,6 @@ package filtro;
 
 public interface UserRepository {
 
-	Users getUsers();
+	Users findByCountry(String country);
 
 }

@@ -7,8 +7,8 @@ public class SearchEngine {
 	public SearchEngine(Filter filter, UserRepository userRepository){
 		this.userRepository = userRepository;
 	}
-	public Users find(String string) {
-		return userRepository.getUsers();
+	public Users find(String keywords, String country) {
+		return userRepository.findByCountry(country);
 	}
 	
 }
