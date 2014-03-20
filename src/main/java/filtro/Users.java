@@ -43,4 +43,7 @@ public class Users {
 		return users.contains(user);
 	}
 
+	public int size() {
+		return users.size();
+	}
 }

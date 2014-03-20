@@ -21,12 +21,17 @@ public class SearchEngineTest {
 	
 	@Test
 	public void when_language_ES_input_single_word_returns_list_of_user() {
+		
 		SearchEngine searchEngine = new SearchEngine(spanishFilter, userRepository);
-		assertEquals(new Users(), searchEngine.find("FONTANERO"));
+		
+		Users users = searchEngine.find("FONTANERO");
+		
+		assertEmptyUsers(users);
 	}
 
 	@Test
 	public void when_language_ES_and_searching_by_a_keyword_returns_matching_users() {
+		
 		Users users = new Users();
 		users.addUser("James", "Fontanero en Barcelona");
 		users.addUser("David", "FONTANERO");
@@ -43,5 +48,9 @@ public class SearchEngineTest {
 
 	private void assertContainsUser(Users result, User user) {
 		assertTrue(result.contains(user));
+	}
+	
+	private void assertEmptyUsers(Users users) {
+		assertEquals(0, users.size());
 	}
 }
