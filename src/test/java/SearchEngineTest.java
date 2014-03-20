@@ -11,6 +11,7 @@ import filtro.FilterFactory;
 import filtro.SearchEngine;
 import filtro.StubUserRepository;
 import filtro.User;
+import filtro.Users;
 
 
 public class SearchEngineTest {
@@ -35,21 +36,12 @@ public class SearchEngineTest {
 
 	@Test
 	public void when_language_ES_and_searching_by_a_keyword_returns_matching_users() {
-		List<User> users = new ArrayList<User>();
-		addUserTo(users, "James", "FONTANERO");
-		addUserTo(users, "David", "FONTANERO");
-
+		Users users = new Users();
+		users.addUser("James", "FONTANERO");
+		users.addUser("David", "FONTANERO");
 		userRepository.setUsers(users);
 
 		SearchEngine searchEngine = new SearchEngine(spanishFilter, userRepository);
 		assertEquals(users, searchEngine.find("FONTANERO"));
 	}
-
-	private void addUserTo(List<User> users, String name, String profession) {
-		User secondUser = new User();
-		secondUser.setName(name);
-		secondUser.setProfession(profession);
-		users.add(secondUser);
-	}
-	
 }

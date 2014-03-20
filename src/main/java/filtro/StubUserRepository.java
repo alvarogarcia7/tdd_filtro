@@ -4,13 +4,14 @@ import java.util.List;
 
 public class StubUserRepository {
 
-	private List<User> users;
+	private Users users = new Users();
 
 	public void setUsers(List<User> users) {
-		this.users = users;
+		this.users.clear();
+		this.users.addAll(users);
 	}
 	
-	public List<User> getUsers(){
+	public Users getUsers(){
 		return users;
 	}
  
