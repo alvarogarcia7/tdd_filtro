@@ -3,8 +3,10 @@ import static org.junit.Assert.assertEquals;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.junit.Before;
 import org.junit.Test;
 
+import filtro.Filter;
 import filtro.FilterFactory;
 import filtro.SearchEngine;
 import filtro.StubUserRepository;
@@ -13,12 +15,21 @@ import filtro.User;
 
 public class SearchEngineTest {
 
+	private Filter spanishFilter;
+	private StubUserRepository userRepository;
+
+	@Before
+	public void setUp(){
+		FilterFactory filterFactory = new FilterFactory();
+		spanishFilter = filterFactory.createSpanishFilter();
+
+		userRepository = new StubUserRepository();
+		userRepository.setUsers(new ArrayList<User>());
+	}
+	
 	@Test
 	public void when_language_ES_input_single_word_returns_list_of_user() {
-		FilterFactory filterFactory = new FilterFactory();
-		StubUserRepository userRepository = new StubUserRepository();
-		userRepository.setUsers(new ArrayList<User>());
-		SearchEngine searchEngine = new SearchEngine(filterFactory.createSpanishFilter(), userRepository);
+		SearchEngine searchEngine = new SearchEngine(spanishFilter, userRepository);
 		assertEquals(new ArrayList<User>(), searchEngine.find("FONTANERO"));
 	}
 
