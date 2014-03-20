@@ -9,7 +9,7 @@ public class SearchEngine {
 		this.filter = filter; 
 	}
 	
-	public List<String> normalize(String searchQuery) {
+	public List<String> find(String searchQuery) {
 		return filter.normalize(searchQuery);
 	}
 }
