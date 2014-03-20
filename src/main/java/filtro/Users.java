@@ -7,10 +7,10 @@ public class Users {
 
 	private List<User> users = new ArrayList<User>();
 	
-	public void addUser(String name, String profession) {
+	public void addUser(String name, String profile) {
 		User user = new User();
 		user.setName(name);
-		user.setProfession(profession);
+		user.setProfile(profile);
 		this.users.add(user);
 	}
 
@@ -37,6 +37,10 @@ public class Users {
 		} else if (!users.equals(other.users))
 			return false;
 		return true;
+	}
+
+	public boolean contains(User user) {
+		return users.contains(user);
 	}
 
 }
