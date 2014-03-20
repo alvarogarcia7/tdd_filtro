@@ -5,6 +5,6 @@ import java.util.List;
 public class FilterLanguage {
 
 	protected List<String> expectedWords;
-	protected SearchEngine filter;
+	protected Filter filter;
 
 }

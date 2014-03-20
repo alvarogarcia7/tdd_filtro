@@ -1,5 +1,7 @@
 package filtro;
 
+import java.util.List;
+
 public class Filter {
 	
 	private Normalizer[] normalizers;
@@ -8,12 +10,13 @@ public class Filter {
 		this.normalizers = normalizers;
 	}
 
-	public String normalize(String searchQuery) {
+	public List<String> normalize(String searchQuery) {
 
 		for (Normalizer filter : normalizers) {
 			searchQuery = filter.normalize(searchQuery);
 		}
 		
-		return searchQuery;
+		SplitterNormalizer splitter = new SplitterNormalizer();
+		return splitter.normalize(searchQuery);
 	}
 }
