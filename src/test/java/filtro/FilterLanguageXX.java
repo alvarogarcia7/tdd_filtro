@@ -13,7 +13,7 @@ public class FilterLanguageXX extends FilterLanguage{
 	public void setUp() {
 		FilterFactory factory = new FilterFactory();
 		Filter xLanguageFilter = factory.createXFilter();
-		filter = new SearchQueryFilter(xLanguageFilter);
+		filter = new SearchEngine(xLanguageFilter);
 		
 		expectedWords = new ArrayList<String>();
 		expectedWords.add("FONTANERO");
@@ -21,7 +21,7 @@ public class FilterLanguageXX extends FilterLanguage{
 	
 	@Test
 	public void in_language_XX_input_with_plural_words_converted_to_list_of_singular_word(){
-		assertEquals(expectedWords, filter.normalize("FONTANEROX"));		
+		assertEquals(expectedWords, filter.find("FONTANEROX"));		
 	}
 
 }
