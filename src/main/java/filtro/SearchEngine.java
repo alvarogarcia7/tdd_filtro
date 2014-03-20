@@ -1,6 +1,5 @@
 package filtro;
 
-import java.util.List;
 
 public class SearchEngine {
 	
@@ -9,7 +8,4 @@ public class SearchEngine {
 		this.filter = filter; 
 	}
 	
-	public List<String> find(String searchQuery) {
-		return filter.normalize(searchQuery);
-	}
 }
