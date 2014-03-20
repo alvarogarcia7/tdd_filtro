@@ -2,15 +2,16 @@ package filtro;
 
 import java.util.ArrayList;
 
-
 public class SearchEngine {
 	
 	private Filter filter;
-	public SearchEngine(Filter filter){
-		this.filter = filter; 
+	private StubUserRepository userRepository;
+	public SearchEngine(Filter filter, StubUserRepository userRepository){
+		this.filter = filter;
+		this.userRepository = userRepository;
 	}
 	public Object find(String string) {
-		return new ArrayList<User>();
+		return userRepository.getUsers();
 	}
 	
 }

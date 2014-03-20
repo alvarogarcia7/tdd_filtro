@@ -1,0 +1,17 @@
+package filtro;
+
+import java.util.List;
+
+public class StubUserRepository {
+
+	private List<User> users;
+
+	public void setUsers(List<User> users) {
+		this.users = users;
+	}
+	
+	public List<User> getUsers(){
+		return users;
+	}
+ 
+}
