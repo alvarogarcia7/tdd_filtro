@@ -2,13 +2,13 @@ package filtro;
 
 public class FilterFactory {
 
-	public Filter createSpanishFilter() {
+	public static Filter createSpanishFilter() {
 		Normalizer[] normalizers = new Normalizer[] { new UpperCaseNormalizer(), new AccentRemoverNormalizer(), new SingularizerSpanishNormalizer() };
 		Filter filter = new Filter(normalizers);
 		return filter;
 	}
 	
-	public Filter createXFilter() {
+	public static Filter createXFilter() {
 		Normalizer[] normalizers = new Normalizer[] { new UpperCaseNormalizer(), new AccentRemoverNormalizer(), new SingularizerXNormalizer() };
 		Filter filter = new Filter(normalizers);
 		return filter;

@@ -11,8 +11,7 @@ public class FilterLanguageES extends FilterLanguage{
 	
 	@Before
 	public void setUp() {
-		FilterFactory factory = new FilterFactory();
-		filter = factory.createSpanishFilter();
+		filter = FilterFactory.createSpanishFilter();
 		 
 		expectedWords = new ArrayList<String>();
 		expectedWords.add("FONTANERO");

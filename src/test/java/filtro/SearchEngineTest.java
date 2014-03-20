@@ -1,3 +1,4 @@
+package filtro;
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Before;
@@ -17,8 +18,7 @@ public class SearchEngineTest {
 
 	@Before
 	public void setUp(){
-		FilterFactory filterFactory = new FilterFactory();
-		spanishFilter = filterFactory.createSpanishFilter();
+		spanishFilter = FilterFactory.createSpanishFilter();
 
 		userRepository = new StubUserRepository();
 		userRepository.setUsers(new Users());
