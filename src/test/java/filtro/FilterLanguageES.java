@@ -15,7 +15,9 @@ public class FilterLanguageES {
 
 	@Before
 	public void setUp() {
-		filter = new SearchQueryFilter();
+		FilterFactory factory = new FilterFactory();
+		Filter spanishFilter = factory.createSpanishFilter();
+		filter = new SearchQueryFilter(spanishFilter);
 		
 		expectedWords = new ArrayList<String>();
 		expectedWords.add("FONTANERO");

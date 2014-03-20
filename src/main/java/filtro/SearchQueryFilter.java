@@ -1,27 +1,18 @@
 package filtro;
 
-import java.text.Normalizer;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class SearchQueryFilter {
 	
-	public List<String> normalize(String searchQuery) {
-		return normalize(searchQuery, "ES");
+	private Filter filter;
+	public SearchQueryFilter(Filter filter){
+		this.filter = filter;
 	}
-	public List<String> normalize(String searchQuery, String language) {
-		
-		UpperCaseNormalizer filter = new UpperCaseNormalizer();
+	
+	public List<String> normalize(String searchQuery) {
 		searchQuery = filter.normalize(searchQuery);
-
-		AccentRemoverNormalizer filterAccents = new AccentRemoverNormalizer();
-		searchQuery = filterAccents.normalize(searchQuery);
 		
-		SingularizerNormalizer filterSingularizer = new SingularizerNormalizer();
-		searchQuery = filterSingularizer.normalize(searchQuery, language);
-		
-		SplitterNormalizer filterSplitter = new SplitterNormalizer();
-		return filterSplitter.normalize(searchQuery);
+		SplitterNormalizer splitter = new SplitterNormalizer();
+		return splitter.normalize(searchQuery);
 	}
 }
