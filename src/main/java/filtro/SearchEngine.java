@@ -3,11 +3,11 @@ package filtro;
 
 public class SearchEngine {
 	
-	private StubUserRepository userRepository;
-	public SearchEngine(Filter filter, StubUserRepository userRepository){
+	private UserRepository userRepository;
+	public SearchEngine(Filter filter, UserRepository userRepository){
 		this.userRepository = userRepository;
 	}
-	public Object find(String string) {
+	public Users find(String string) {
 		return userRepository.getUsers();
 	}
 	

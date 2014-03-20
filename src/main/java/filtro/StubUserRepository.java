@@ -1,7 +1,7 @@
 package filtro;
 
 
-public class StubUserRepository {
+public class StubUserRepository implements UserRepository{
 
 	private Users users = new Users();
 
