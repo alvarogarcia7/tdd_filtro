@@ -35,7 +35,6 @@ public class SearchEngineTest {
 		Users users = new Users();
 		users.addUser("James", "Fontanero en Barcelona", "ES");
 		users.addUser("David", "FONTANERO", "ES");
-		users.addUser("Marcos", "Mecánico en Mataró", "ES");
 		
 		userRepository.setUsers(users);
 
