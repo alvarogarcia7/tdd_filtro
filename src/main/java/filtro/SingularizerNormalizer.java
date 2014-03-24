@@ -1,6 +1,6 @@
 package filtro;
 
-public abstract class SingularizerNormalizer implements Normalizer{
+public class SingularizerNormalizer implements Normalizer{
 
 	public String normalize(String searchQuery) {
 		String SUFFIX_PLURAL = getPluralSuffix();
@@ -11,6 +11,8 @@ public abstract class SingularizerNormalizer implements Normalizer{
 		return searchQuery;
 	}
 	
-	public abstract String getPluralSuffix();
+	public String getPluralSuffix(){
+		return "S";
+	};
 	
 }
